@@ -10,7 +10,22 @@ from cadastro.models import Cidade
 def listacidades(request):
 
     qs = Cidade.objects.all()
-    qs_capitais = Cidade.objects.filter(capital=True)
+    context = {
+        'cidades': qs,
+        'titulo': 'SIDIA'
+    }
+    return render(request, 'cadastro/lista_cidades.html', context)
 
+def detalhecidades(request):
+
+    id_cidade = request
+
+    cidade = get_object_or_404(Cidade, pk=id_cidade)
+
+    context = {
+        'cidade': cidade
+    }
+
+    return render(request, 'cadastro/detelhe_cidades.html', context)
 
 

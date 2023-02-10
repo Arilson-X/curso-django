@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+        <h1>Detalhe Cidade:</h1>
+        <ul class="list-group">
+            {% for cidade in cidades %}
+            <li class="list-group-item {% if cidade.capital %} active {% endif %}"> Nome: {{cidade.nome}}</li>
+            {% endfor %}
+        </ul>
+{% endblock %}
