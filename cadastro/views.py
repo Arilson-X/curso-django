@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
+from cadastro.forms import CidadeForm
 from cadastro.models import Cidade
 
 
@@ -16,16 +17,27 @@ def listacidades(request):
     }
     return render(request, 'cadastro/lista_cidades.html', context)
 
-def detalhecidades(request):
 
-    id_cidade = request
+def detalhecidades(request, id):
 
-    cidade = get_object_or_404(Cidade, pk=id_cidade)
+    # id_cidade = request.GET['id_cidade']
+
+    cidade = get_object_or_404(Cidade, pk=id)
 
     context = {
         'cidade': cidade
     }
 
-    return render(request, 'cadastro/detelhe_cidades.html', context)
+    return render(request, 'cadastro/detalhe_cidades.html', context)
 
+
+def cadastracidades(request):
+
+    form = CidadeForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'cadastro/cadastra_cidades.html', context)
 

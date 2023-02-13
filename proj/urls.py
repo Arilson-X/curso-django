@@ -20,5 +20,5 @@ from cadastro.views import listacidades
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cidades/', include('cadastro.urls'))
+    path('', include('cadastro.urls'))
 ]

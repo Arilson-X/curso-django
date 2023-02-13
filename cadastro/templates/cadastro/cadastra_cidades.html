@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+
+{% block conteudo %}
+        <h1>Nova cidade</h1>
+        <form action="{% url 'cidades-cadastro' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+
+{% endblock %}
